@@ -17,6 +17,7 @@ return new class extends Migration
         $table->string('description');
         $table->string('class');
         $table->string('time');
+        $table->string('endtime');
         $table->string('date');
         $table->timestamps();
     });

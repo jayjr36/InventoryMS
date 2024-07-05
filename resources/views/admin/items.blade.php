@@ -52,7 +52,9 @@
                     <th scope="col">Image</th>
                     <th scope="col">Model</th>
                     <th scope="col">Available</th>
+                    @if (Auth::user()->role_id == 1)
                     <th scope="col">Action</th>
+                    @endif
                     @if (Auth::user()->role_id != 1)
                         <th scope="col">Checkbox</th>
                         <th scope="col">Quantity</th>
@@ -68,6 +70,7 @@
 
                         <td>{{ $item->model }}</td>
                         <td>{{ $item->quantity }}</td>
+                        @if (Auth::user()->role_id == 1)
                         <td>
 
                             <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
@@ -78,6 +81,7 @@
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             </form>
                         </td>
+                        @endif
                         @if (Auth::user()->role_id != 1)
                             <td>
                                 <input type="checkbox" class="item-checkbox" data-item-id="{{ $item->id }}">
@@ -129,7 +133,8 @@
                 $('.item-checkbox').change(function() {
                     var itemId = $(this).data('item-id');
                     var itemName = $(this).closest('tr').find('td:eq(0)').text();
-                    var itemModel = $(this).closest('tr').find('td:eq(3)').text();
+                    // var itemImage = $(this).closest('tr').find('td:eq(0)');
+                    var itemModel = $(this).closest('tr').find('td:eq(2)').text();
                     var itemQuantity = $(this).closest('tr').find('.item-quantity').val();
 
                     if ($(this).prop('checked')) {

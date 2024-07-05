@@ -10,7 +10,7 @@ class Session extends Model
     use HasFactory;
 
 
-    protected $fillable = ['description', 'class', 'time', 'date'];
+    protected $fillable = ['description', 'class', 'time', 'date', 'endtime'];
 
     
 }

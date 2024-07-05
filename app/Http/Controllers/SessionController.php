@@ -16,7 +16,8 @@ class SessionController extends Controller
              'sessionDescription'=> 'required|string',
              'className'=>'required|string',
              'sessionTime'=> 'required|string',
-             'sessionDate'=> 'required|string'
+             'sessionDate'=> 'required|string',
+             'endtime'=> 'required'
         ]);
 
         //add to database
@@ -24,7 +25,8 @@ class SessionController extends Controller
             'description' => $request->input('sessionDescription'),
             'class'=>$request->input('className'),
             'time'=>$request->input('sessionTime'),
-            'date'=>$request->input('sessionDate')
+            'date'=>$request->input('sessionDate'),
+            'endtime'=> $request->input('endtime')
             
 
         ]);
@@ -42,7 +44,7 @@ class SessionController extends Controller
             $html = '<p class="display-5 text-center fw-bold">Sessions timetable</p>';
             $html .= '<div class="table-responsive">';
             $html .= '<table class="table table-bordered table-striped">';
-            $html .= '<thead class="thead-dark"><tr><th>Description</th><th>Class</th><th>Time</th><th>Date</th></tr></thead>';
+            $html .= '<thead class="thead-dark"><tr><th>Description</th><th>Class</th><th>Start Time</th><th>End Time</th><th>Date</th></tr></thead>';
             $html .= '<tbody>';
     
             foreach ($sessions as $session) {
@@ -51,6 +53,7 @@ class SessionController extends Controller
                 $html .= '<td>' . $session->description . '</td>';
                 $html .= '<td>' . $session->class . '</td>';
                 $html .= '<td>' . $session->time . '</td>';
+                $html .= '<td>' . $session->endtime . '</td>';
                 $html .= '<td>' . $session->date . '</td>';
                 $html .= '</tr>';
             }

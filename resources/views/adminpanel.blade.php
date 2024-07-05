@@ -35,10 +35,15 @@
 <div class="leftcontaineer">`
     <div class="d-grid gap-2">
 
+        @if (Auth::user()->role_id == 1)
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('item.create') }}')">Add Inventories</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('session.create') }}')">Add sessions</button>
+        @endif
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('admin-sessions') }}')">All sessions</button>
+        @if (Auth::user()->role_id == 1)
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('requests.index') }}')">Approve requests</button>
+        @endif
+
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('post.create') }}')">Post updates</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('posts.index') }}')">Manage Posts</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('users.index') }}')">Manage users</button>

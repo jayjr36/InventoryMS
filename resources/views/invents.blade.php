@@ -55,14 +55,17 @@
           <td>{{ $item->name }}</td>
           <td>{{ $item->model }}</td>
           <td>{{ $item->quantity }}</td>
+          @if(Auth::user()->hasRole('admin'))
           <td>
-            <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
-            <form action="{{ route('items.destroy', $item->id) }}" method="post" style="display: inline-block;">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-            </form>
+              <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
+              <form action="{{ route('items.destroy', $item->id) }}" method="post" style="display: inline-block;">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
           </td>
+      @endif
+      
         </tr>
         @endforeach
       </tbody>

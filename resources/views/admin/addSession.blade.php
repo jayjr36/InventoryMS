@@ -45,6 +45,10 @@
         <div class="col mx-auto p-2">
             <input type="time" class="form-control" aria-label="Time" name="sessionTime">
         </div>
+
+        <div class="col mx-auto p-2">
+            <input type="time" class="form-control" aria-label="Time" name="endtime">
+        </div>
     </div>
     
       
