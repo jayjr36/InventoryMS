@@ -74,12 +74,20 @@
                         <td>
 
                             <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <form action="{{ route('items.destroy', $item->id) }}" method="post"
-                                style="display: inline-block;">
+                            <form id="deleteForm{{ $item->id }}" action="{{ route('items.destroy', $item->id) }}" method="post" style="display: inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ $item->id }}')">Delete</button>
                             </form>
+                            
+                            <script>
+                                function confirmDelete(itemId) {
+                                    if (confirm('Are you sure you want to delete this item?')) {
+                                        document.getElementById('deleteForm' + itemId).submit();
+                                    }
+                                }
+                            </script>
+                            
                         </td>
                         @endif
                         @if (Auth::user()->role_id != 1)

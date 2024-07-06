@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <div class="container-fluid px-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col">
     <section id="requests">
         <script>
             function displayRequests() {
@@ -79,6 +82,9 @@
             });
         </script>
     </section>
+</div>
+</div>
+</div>
 </body>
 
 </html>

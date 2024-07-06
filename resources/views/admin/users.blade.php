@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>Users</title>
 </head>
 <body>
@@ -41,11 +40,20 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
               <td>{{ $user->role_id }}</td>
               <td>
                   <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                  <form action="{{ route('users.destroy', $user->id) }}" method="post" style="display: inline-block;">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                  </form>
+                  <form id="deleteForm{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="post" style="display: inline-block;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ $user->id }}')">Delete</button>
+                </form>
+                
+                <script>
+                    function confirmDelete(userId) {
+                        if (confirm('Are you sure you want to delete this user?')) {
+                            document.getElementById('deleteForm' + userId).submit();
+                        }
+                    }
+                </script>
+                
               </td>
           </tr>
           @endforeach

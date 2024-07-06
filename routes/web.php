@@ -110,6 +110,11 @@ Route::get('/cleared-requests', [PdfController::class, 'clearedPdf'])->name('cle
 
 //Route::get('/fetch-users', function () { return view('admin.users');})->name('users.manage');
 
+Route::get('/pending-items', [CartController::class, 'pending'])->name('pending-items');
+Route::get('/approved-items', [CartController::class, 'approved'])->name('approved-items');
+Route::get('/rejected-items', [CartController::class, 'rejected'])->name('rejected-items');
+Route::post('/update-status', [CartController::class, 'updateStatus'])->name('update-status');
+
 
 
 Auth::routes();

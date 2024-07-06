@@ -41,7 +41,7 @@ class SessionController extends Controller
             $sessions = Session::all();
             
             
-            $html = '<p class="display-5 text-center fw-bold">Sessions timetable</p>';
+            $html = '<p class="display-6 text-center fw-bold">Sessions timetable</p>';
             $html .= '<div class="table-responsive">';
             $html .= '<table class="table table-bordered table-striped">';
             $html .= '<thead class="thead-dark"><tr><th>Description</th><th>Class</th><th>Start Time</th><th>End Time</th><th>Date</th></tr></thead>';

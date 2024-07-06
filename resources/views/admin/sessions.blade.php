@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="container col-10">
 <section id='sessions'>
     <script>
         function displaySession() {
@@ -21,6 +21,6 @@
         });
     </script>
 </section>
-
+</div>
 
 @endsection
