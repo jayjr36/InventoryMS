@@ -207,3 +207,44 @@ class CartController extends Controller
         }
     }
 }
+
+// public function updateStatus(Request $request)
+// {
+//     try {
+//         $itemId = $request->input('item_id');
+//         $action = $request->input('action');
+
+//         $item = Cart::find($itemId);
+//         if (!$item) {
+//             return response()->json(['error' => 'Item not found'], 404);
+//         }
+
+//         if ($action === 'approve') {
+//             $item->status = 'approved';
+//             $item->save();
+            
+//             // Update quantity in items table by subtracting the quantity in carts table
+//             $itemQuantity = $item->quantity;
+//             $itemInItemTable = Item::find($item->item_id);
+//             $itemInItemTable->quantity -= $itemQuantity;
+//             $itemInItemTable->save();
+//         } elseif ($action === 'reject') {
+//             $item->status = 'rejected';
+//             $item->save();
+//         } elseif ($action === 'clear') {
+//             $item->status = 'cleared';
+//             $item->save();
+            
+//             // Update quantity in items table by adding the quantity in carts table
+//             $itemQuantity = $item->quantity;
+//             $itemInItemTable = Item::find($item->item_id);
+//             $itemInItemTable->quantity += $itemQuantity;
+//             $itemInItemTable->save();
+//         }
+
+//         return response()->json(['success' => true]);
+//     } catch (\Exception $e) {
+//         \Log::error('Error updating status: ' . $e->getMessage());
+//         return response()->json(['error' => 'Internal Server Error'], 500);
+//     }
+// }
