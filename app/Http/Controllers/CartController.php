@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
 {
@@ -56,7 +57,7 @@ class CartController extends Controller
             return response()->json(['message' => 'Items added to cart successfully']);
         } catch (\Exception $e) {
 
-            \Log::error('Error adding items to cart: ' . $e->getMessage());
+            Log::error('Error adding items to cart: ' . $e->getMessage());
             return response()->json(['error' => 'Internal Server Error'], 500);
         }
     }
@@ -106,7 +107,7 @@ class CartController extends Controller
             $html .= '</div>';
             return response()->json(['html' => $html]);
         } catch (\Exception $e) {
-            \Log::error('Error fetching cart items: ' . $e->getMessage());
+            Log::error('Error fetching cart items: ' . $e->getMessage());
             return response()->json(['error' => 'Internal Server Error'], 500);
         }
     }
@@ -158,7 +159,7 @@ class CartController extends Controller
             $html .= '</div>';
             return response()->json(['html' => $html]);
         } catch (\Exception $e) {
-            \Log::error('Error fetching cart items: ' . $e->getMessage());
+            Log::error('Error fetching cart items: ' . $e->getMessage());
             return response()->json(['error' => 'Internal Server Error'], 500);
         }
     }
@@ -202,49 +203,8 @@ class CartController extends Controller
 
             return response()->json(['success' => true]);
         } catch (\Exception $e) {
-            \Log::error('Error updating status: ' . $e->getMessage());
+            Log::error('Error updating status: ' . $e->getMessage());
             return response()->json(['error' => 'Internal Server Error'], 500);
         }
     }
 }
-
-// public function updateStatus(Request $request)
-// {
-//     try {
-//         $itemId = $request->input('item_id');
-//         $action = $request->input('action');
-
-//         $item = Cart::find($itemId);
-//         if (!$item) {
-//             return response()->json(['error' => 'Item not found'], 404);
-//         }
-
-//         if ($action === 'approve') {
-//             $item->status = 'approved';
-//             $item->save();
-            
-//             // Update quantity in items table by subtracting the quantity in carts table
-//             $itemQuantity = $item->quantity;
-//             $itemInItemTable = Item::find($item->item_id);
-//             $itemInItemTable->quantity -= $itemQuantity;
-//             $itemInItemTable->save();
-//         } elseif ($action === 'reject') {
-//             $item->status = 'rejected';
-//             $item->save();
-//         } elseif ($action === 'clear') {
-//             $item->status = 'cleared';
-//             $item->save();
-            
-//             // Update quantity in items table by adding the quantity in carts table
-//             $itemQuantity = $item->quantity;
-//             $itemInItemTable = Item::find($item->item_id);
-//             $itemInItemTable->quantity += $itemQuantity;
-//             $itemInItemTable->save();
-//         }
-
-//         return response()->json(['success' => true]);
-//     } catch (\Exception $e) {
-//         \Log::error('Error updating status: ' . $e->getMessage());
-//         return response()->json(['error' => 'Internal Server Error'], 500);
-//     }
-// }
