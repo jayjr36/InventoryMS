@@ -36,28 +36,27 @@
     
                     <div class="mb-3">
                         <label for="sessionDescription" class="form-label">Description</label>
-                        <textarea class="form-control" id="sessionDescription" name="sessionDescription" rows="2"
-                            placeholder="Enter session description"></textarea>
+                        <textarea class="form-control" id="sessionDescription" name="sessionDescription" rows="2" placeholder="Enter session description"></textarea>
                     </div>
     
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="className" class="form-label">Class</label>
-                            <input type="text" class="form-control" id="className" name="className"
-                                placeholder="Enter class name">
+                            <input type="text" class="form-control" id="className" name="className" placeholder="Enter class name">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <label for="sessionDate" class="form-label">Date</label>
                             <input type="date" class="form-control" id="sessionDate" name="sessionDate">
                         </div>
-                        <div class="col-md-3">
+                                          </div>
+    
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-6">
                             <label for="sessionTime" class="form-label">Start Time</label>
                             <input type="time" class="form-control" id="sessionTime" name="sessionTime">
                         </div>
-                    </div>
-    
-                    <div class="row g-3 mt-3">
-                        <div class="col-md-3">
+
+                        <div class="col-md-6">
                             <label for="endtime" class="form-label">End Time</label>
                             <input type="time" class="form-control" id="endtime" name="endtime">
                         </div>
@@ -69,8 +68,7 @@
                 </form>
             </div>
         </div>
-    </div>
-    
+    </div> 
     
     @if ($errors->any())
         <div class="alert alert-danger">

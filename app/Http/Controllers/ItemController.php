@@ -20,6 +20,7 @@ class ItemController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'model' => 'required|string',
             'quantity' => 'required|string',
+            'barcode' => 'required|unique:items,barcode',
         ]);
 
         try {
@@ -32,6 +33,7 @@ class ItemController extends Controller
                 'image_path' => $imagePath,
                 'model' => $request->input('model'),
                 'quantity' => $request->input('quantity'),
+                'barcode' => $request->input('barcode')
             ]);
 
             return redirect()->route('item.create')->with('success', 'Item added successfully!');
@@ -89,5 +91,24 @@ class ItemController extends Controller
             $item = Item::find($id);
             return view('admin.editItem', compact('item'));
         
+    }
+
+    public function addQuantityForm()
+    {
+        return view('admin.add_quantity');
+    }
+
+    public function addQuantity(Request $request)
+    {
+        $request->validate([
+            'barcode' => 'required|exists:items,barcode',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $item = Item::where('barcode', $request->barcode)->first();
+        $item->quantity += $request->quantity;
+        $item->save();
+
+        return redirect()->route('items.addQuantityForm')->with('success', 'Quantity added successfully.');
     }
 }

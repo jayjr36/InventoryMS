@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
     <title>Admin panel</title>
@@ -54,7 +56,7 @@
         </div>
         
         @endif
-
+        <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('scanner-home') }}')">Scanner</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('post.create') }}')">Post updates</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('posts.index') }}')">Manage Posts</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('users.index') }}')">Manage users</button>
@@ -89,8 +91,8 @@
         document.getElementById('contentIframe').src = route;
     }
 </script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> --}}
 </body>
 </html>

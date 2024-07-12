@@ -1,4 +1,5 @@
 <?php
+use illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\CartController;
@@ -7,8 +8,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\BorrowingController;
 use App\Http\Controllers\inventoryController;
-use illuminate\Support\Facades\Auth;
 
 
 
@@ -115,7 +116,21 @@ Route::get('/approved-items', [CartController::class, 'approved'])->name('approv
 Route::get('/rejected-items', [CartController::class, 'rejected'])->name('rejected-items');
 Route::post('/update-status', [CartController::class, 'updateStatus'])->name('update-status');
 
+Route::get('/borrowings/create', [BorrowingController::class, 'create'])->name('borrowings.create');
+Route::post('/borrowings', [BorrowingController::class, 'store'])->name('borrowings.store');
+Route::get('/borrowings', [BorrowingController::class, 'index'])->name('borrowings.index');
+Route::get('/borrowings/return', [BorrowingController::class, 'returnForm'])->name('borrowings.returnForm');
+Route::post('/borrowings/return', [BorrowingController::class, 'returnItem'])->name('borrowings.returnItem');
 
+Route::get('/items/add-quantity', [ItemController::class, 'addQuantityForm'])->name('items.addQuantityForm');
+Route::post('/items/add-quantity', [ItemController::class, 'addQuantity'])->name('items.addQuantity');
+Route::get('/itemIndex', function () {
+    return view('admin.index');
+})->name('scanned-items');
+
+Route::get('/scanner', function () {
+    return view('admin.scanner');
+})->name('scanner-home');
 
 Auth::routes();
 

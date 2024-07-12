@@ -29,42 +29,41 @@
                     {{ session('error') }}
                 </div>
             @endif
-
             <form action="{{ route('item.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-
-                <div class="row g-3">
-                    <div class="col">
-                        <label for="itemName" class="form-label">Item Name</label>
-                        <input type="text" class="form-control" id="itemName" placeholder="Enter item name"
-                            name="itemName">
+                <div class="form-group row mb-3">
+                    <label for="itemName" class="col-sm-2 col-form-label">Item Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="itemName" placeholder="Enter item name" name="itemName" value="{{ old('itemName') }}">
                     </div>
                 </div>
-
-                <div class="row g-3">
-                    <div class="col">
-                        <label for="quantity" class="form-label">Quantity</label>
-                        <input type="text" class="form-control" id="quantity" placeholder="Enter quantity"
-                            name="quantity">
-                    </div>
-                    <div class="col">
-                        <label for="model" class="form-label">Model</label>
-                        <input type="text" class="form-control" id="model" placeholder="Enter model"
-                            name="model">
+                
+                <div class="form-group row mb-3">
+                    <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" name="quantity" value="{{ old('quantity') }}">
                     </div>
                 </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="px-2 text-center">
-                            <label for="image" class="form-label">Upload Image:</label>
-                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
-                        </div>
+                <div class="form-group row mb-3">
+                    <label for="model" class="col-sm-2 col-form-label">Model</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="model" placeholder="Enter model" name="model" value="{{ old('model') }}">
                     </div>
                 </div>
-
-                <div class="d-grid gap-2 col-6 mx-auto mt-4">
-                    <button class="btn btn-primary" type="submit">ADD ITEM</button>
+                <div class="form-group row mb-3">
+                    <label for="image" class="col-sm-2 col-form-label">Upload Image</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="barcode" class="col-sm-2 col-form-label">Barcode</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="barcode" placeholder="Enter barcode" name="barcode" value="{{ old('barcode') }}">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">ADD ITEM</button>
                 </div>
             </form>
 

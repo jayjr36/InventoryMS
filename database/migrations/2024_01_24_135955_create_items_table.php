@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('barcode')->unique()->nullable();
             $table->string('name');
-            $table->string('model');
-            $table->string('quantity');
             $table->string('image_path')->nullable();
+            $table->string('model');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
