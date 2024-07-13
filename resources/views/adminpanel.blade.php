@@ -41,6 +41,8 @@
         @if (Auth::user()->role_id == 1)
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('item.create') }}')">Add Inventories</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('session.create') }}')">Add sessions</button>
+        <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('scanner-home') }}')">Scanner</button>
+        
         @endif
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('admin-sessions') }}')">All sessions</button>
         @if (Auth::user()->role_id == 1)
@@ -56,7 +58,6 @@
         </div>
         
         @endif
-        <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('scanner-home') }}')">Scanner</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('post.create') }}')">Post updates</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('posts.index') }}')">Manage Posts</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('users.index') }}')">Manage users</button>

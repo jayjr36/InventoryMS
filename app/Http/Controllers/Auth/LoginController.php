@@ -42,7 +42,11 @@ class LoginController extends Controller
     {
         if (Auth::user()->hasRole('admin')) {
             return '/adminhome'; // Redirect to admin panel if the user is an admin
-        } else {
+        }elseif(Auth::user()->hasRole('hod')){
+            return '/adminhome'; 
+        } 
+        
+        else {
             return '/home'; // Redirect to home page for regular users
         }
     }
