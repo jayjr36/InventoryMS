@@ -26,9 +26,10 @@ class CartController extends Controller
         // Fetch all items grouped by status
         $pendingItems = Cart::where('status', 'pending')->get();
         $approvedItems = Cart::where('status', 'approved')->get();
-        $rejectedItems = Cart::where('status', 'rejected')->get();
+        $rejectedItems = Cart::where('status', 'Rejected')->get();
+        $clearedItems = Cart::where('status', 'Cleared')->get();
 
-        return view('carts.index', compact('pendingItems', 'approvedItems', 'rejectedItems'));
+        return view('carts.index', compact('pendingItems', 'approvedItems', 'rejectedItems', 'clearedItems'));
     }
 
     public function addToCart(Request $request)
@@ -119,7 +120,8 @@ class CartController extends Controller
             $userId = Auth::id();
             $user = User::find($userId); // Fetch the user
 
-            $cartItems = Cart::where('status', 'pending')->get();
+            $cartItems = Cart::whereIn('status', ['pending', 'approved' , 'Cleared', 'Rejected'])->get();
+
             $html = '<p class="display-5 text-center fw-bold">Items Requested</p>';
             $html .= '<div class="table-responsive">';
             $html .= '<table class="table table-bordered table-striped">';
@@ -188,7 +190,7 @@ class CartController extends Controller
             } elseif ($action === 'comment') {
                 // Handle comment logic here, e.g., open a dialog for the user to add a comment
                 // You can use JavaScript to handle this part
-                $item->status = 'Request rejected';
+                $item->status = 'Rejected';
                 $item->save();
             } elseif ($action === 'clear') {
                 $item->status = 'Cleared';

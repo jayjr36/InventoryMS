@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    
+{{--     
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> --}}
 
 
     <title>Admin panel</title>
@@ -46,18 +46,24 @@
         @endif
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('admin-sessions') }}')">All sessions</button>
         @if (Auth::user()->role_id == 1)
+        <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('requests.index') }}')">Item Requests</button>
+{{-- 
         <div class="btn-group">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-primary" >
                 Approve Requests
-            </button>
-            <ul class="dropdown-menu">
+            </button> --}}
+            {{-- <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" onclick="loadContent('{{ route('requests.index') }}')">Pending Requests</a></li>
                 <li><a class="dropdown-item" href="#" onclick="loadContent('{{ route('approved-items') }}')">Approved Requests</a></li>
                 <li><a class="dropdown-item" href="#" onclick="loadContent('{{ route('rejected-items') }}')">Rejected Requests</a></li>
-            </ul>
-        </div>
-        
+            </ul> --}}
+        {{-- </div>
+         --}}
         @endif
+        {{-- <a class="dropdown-item" href="#" onclick="loadContent('{{ route('requests.index') }}')">Pending Requests</a>
+        <a class="dropdown-item" href="#" onclick="loadContent('{{ route('approved-items') }}')">Approved Requests</a>
+        <a class="dropdown-item" href="#" onclick="loadContent('{{ route('rejected-items') }}')">Rejected Requests</a> --}}
+
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('post.create') }}')">Post updates</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('posts.index') }}')">Manage Posts</button>
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('users.index') }}')">Manage users</button>
@@ -92,8 +98,8 @@
         document.getElementById('contentIframe').src = route;
     }
 </script>
-{{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> --}}
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
