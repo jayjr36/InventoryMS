@@ -57,11 +57,18 @@
                     </div>
                 </div>
                 <div class="form-group row mb-3">
+                    <label for="status" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="status" placeholder="Device status" name="status" value="{{ old('status') }}">
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
                     <label for="barcode" class="col-sm-2 col-form-label">Barcode</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="barcode" placeholder="Enter barcode" name="barcode" value="{{ old('barcode') }}">
                     </div>
                 </div>
+               
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">ADD ITEM</button>
                 </div>

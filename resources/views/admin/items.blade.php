@@ -59,6 +59,7 @@
                         <th scope="col">Checkbox</th>
                         <th scope="col">Quantity</th>
                     @endif
+                    <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -98,6 +99,7 @@
                                 <input type="number" class="item-quantity" value="1" min="1">
                             </td>
                         @endif
+                        <td>{{ $item->status }}</td>
                     </tr>
                 @endforeach
             </tbody>

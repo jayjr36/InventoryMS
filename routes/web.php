@@ -43,9 +43,7 @@ Route::get('/userhome', function () {
     return view('home');
 })->name('userhome');
 
-Route::get('/useritems', function () {
-    return view('myitems');
-})->name('useritems');
+Route::get('/useritems', [CartController::class, 'fetchCarts'])->name('useritems');
 
 Route::get('/usersessions', function () {
     return view('mysessions');
@@ -93,7 +91,6 @@ Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('
 
 
 Route::get('/fetch-requests', [CartController::class, 'fetchCarts']);
-Route::post('/update-status', [CartController::class, 'updateStatus']);
 
 Route::get('/all-requests', [CartController::class, 'index'])->name('requests.index');
 
@@ -132,8 +129,10 @@ Route::get('/scanner', function () {
     return view('admin.scanner');
 })->name('scanner-home');
 
+Route::post('/update-status', [CartController::class, 'updateStatus'])->name('updateStatus');
 Auth::routes();
 
+Route::get('/person/borrowings', [BorrowingController::class, 'personIndex'])->name('borrowings.personal');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Auth::routes();

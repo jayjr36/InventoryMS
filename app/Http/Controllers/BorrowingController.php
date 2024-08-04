@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Models\BorrowingRecord;
-use App\Models\Item;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class BorrowingController extends Controller
 {
@@ -83,5 +84,14 @@ class BorrowingController extends Controller
         $borrowing->save();
 
         return redirect()->route('borrowings.index')->with('success', 'Item returned successfully.');
+    }
+
+    public function personIndex()
+    {
+        $user = Auth::user();
+
+        $borrowingRecords = BorrowingRecord::where('user_name', $user->name)->get();
+
+        return view('borrowings.personalList', compact('borrowingRecords'));
     }
 }

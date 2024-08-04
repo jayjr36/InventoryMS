@@ -9,6 +9,6 @@ class Item extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'image_path', 'model', 'quantity', 'barcode'];
+    protected $fillable = ['name', 'image_path', 'model', 'quantity', 'barcode', 'status'];
 
 }

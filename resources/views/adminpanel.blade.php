@@ -46,7 +46,7 @@
         @endif
         <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('admin-sessions') }}')">All sessions</button>
         @if (Auth::user()->role_id == 1)
-        <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('requests.index') }}')">Item Requests</button>
+        <button class="btn btn-primary" type="button" onclick="loadContent('{{ route('useritems') }}')">Item Requests</button>
 {{-- 
         <div class="btn-group">
             <button class="btn btn-primary" >

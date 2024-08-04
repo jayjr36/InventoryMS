@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image_path')->nullable();
             $table->string('model');
+            $table->string('status');
             $table->integer('quantity');
             $table->timestamps();
         });

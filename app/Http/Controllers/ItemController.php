@@ -20,7 +20,8 @@ class ItemController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'model' => 'required|string',
             'quantity' => 'required|string',
-            'barcode' => 'required|unique:items,barcode',
+            'barcode' => 'unique:items,barcode',
+            'status' => 'string',
         ]);
 
         try {
@@ -33,7 +34,8 @@ class ItemController extends Controller
                 'image_path' => $imagePath,
                 'model' => $request->input('model'),
                 'quantity' => $request->input('quantity'),
-                'barcode' => $request->input('barcode')
+                'barcode' => $request->input('barcode'),
+                'status' => $request->input('status')
             ]);
 
             return redirect()->route('item.create')->with('success', 'Item added successfully!');
